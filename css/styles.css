@@ -1,4 +1,35 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
 body {
 	background-color: #333;
 	color: #fff;
+	font-family: Helvetica, Arial, sans-serif;
+}
+.content__title {
+	text-align: center;
+	margin-bottom: 1em;
+}
+.content__btns {
+	display: flex;
+	justify-content: center;
+	gap: 1em;
+	margin-bottom: 2em;
+}
+.content__btn {
+	padding: 0.8em;
+	cursor: pointer;
+	border: none;
+
+	border-radius: 0.4em;
+}
+.content__btn:hover {
+	background-color: rgba(255, 225, 89, 0.192);
+	color: #fff;
+}
+.content__content {
+	padding: 2em;
 }

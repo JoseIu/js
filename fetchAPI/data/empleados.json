@@ -1,0 +1,23 @@
+[
+	{
+		"guid": "1cc7d351-8425-4231-bbdb-55ba8e3c8cbd",
+		"name": "Melanie Gray",
+		"age": 23,
+		"eyeColor": "red",
+		"email": "melaniegray@gushkool.com"
+	},
+	{
+		"guid": "860d95dc-7934-44a7-a3b4-b46f2f3947c4",
+		"name": "Turner Hayes",
+		"age": 32,
+		"eyeColor": "green",
+		"email": "turnerhayes@maximind.com"
+	},
+	{
+		"guid": "7fef2ce6-9398-45a0-ab20-8672d66d1ad3",
+		"name": "Bond Shields",
+		"age": 24,
+		"eyeColor": "red",
+		"email": "bondshields@poochies.com"
+	}
+]
