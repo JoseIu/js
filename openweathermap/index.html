@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/styles.css" />
+		<script defer src="app.js"></script>
+		<title>Openweathermap</title>
+	</head>
+	<body>
+		<header class="header">
+			<div class="wrapper">
+				<h1 class="header__title">Openweathermap</h1>
+			</div>
+		</header>
+
+		<main>
+			<div class="wrapper">
+				<p class="warning">Warning!! solo puedes buscar por ciudades, no por paises</p>
+				<form class="form" action="" id="form">
+					<input class="form__input" type="text" name="pais" id="pais" />
+
+					<input class="form__submit" type="submit" value="Buscar" />
+				</form>
+
+				<div class="temp"></div>
+
+				<div class="map"></div>
+			</div>
+		</main>
+	</body>
+</html>
