@@ -1,0 +1,124 @@
+:root {
+	--primary-color: #a62520;
+	--btn-color: #840007;
+	--text-color: #fff;
+	--gay-color: #888a8a;
+}
+
+.wrapper {
+	max-width: 1150px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.header {
+	padding: 1em;
+	background-color: brown;
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	margin-bottom: 4em;
+}
+.header__title {
+	background-color: aqua;
+}
+.header__nav {
+	background-color: bisque;
+}
+.header__nav-ul {
+	display: flex;
+	column-gap: 2em;
+}
+.header__nav-item {
+}
+.header__nav-link {
+}
+
+.title {
+	text-align: center;
+	font-size: 1.7em;
+	font-weight: bold;
+	margin-bottom: 1em;
+}
+.select {
+	background-color: var(--gay-color);
+	padding: 3em;
+	margin-bottom: 3em;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.form {
+	width: 100%;
+	/* background-color: blueviolet; */
+	display: flex;
+	flex-direction: column;
+	row-gap: 0.5em;
+}
+.form__label {
+	/* background-color: brown; */
+}
+.form__select {
+	outline: 1px solid #222;
+	border-radius: 0.3em;
+	/* background-color: yellow; */
+
+	width: 100%;
+}
+.form__option {
+	/* background-color: green; */
+}
+.resultados {
+	/* background-color: aqua; */
+}
+.resultados__title {
+	text-align: center;
+	font-size: 1.3em;
+	font-weight: bold;
+}
+.resultados__cotent {
+	padding: 0 0.7em;
+	/* background-color: yellowgreen; */
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 1.3em;
+}
+.card {
+	border-radius: 0.5em;
+	border-radius: 0.5em 0.5em 0 0;
+}
+.card__image {
+	height: 17em;
+	border-radius: 0.5em 0.5em 0 0;
+}
+.card__img {
+	height: 100%;
+	border-radius: 1em 1em 0 0;
+}
+.card__info {
+	width: 100%;
+	min-height: 5em;
+	background-color: lightsalmon;
+	border-radius: 0 0 0.5em 0.5em;
+
+	display: flex;
+	flex-direction: column;
+	row-gap: 0.3em;
+	justify-content: center;
+	align-items: center;
+}
+.card__title {
+}
+.card__btn {
+	width: 80%;
+	padding: 0.4em 0;
+	border-radius: 0.3em;
+	cursor: pointer;
+	text-align: center;
+	background-color: var(--btn-color);
+	color: var(--text-color);
+}
