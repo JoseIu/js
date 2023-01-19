@@ -1,31 +1,32 @@
 :root {
 	--primary-color: #a62520;
 	--btn-color: #840007;
-	--text-color: #fff;
-	--gay-color: #888a8a;
+	--text-color: rgba(255, 255, 255, 0.945);
+	--gay-color: #888a8a27;
+	--card-color: #888a8a5e;
 }
 
+body {
+	position: relative;
+}
 .wrapper {
 	max-width: 1150px;
 	margin-left: auto;
 	margin-right: auto;
 }
-
-.header {
-	padding: 1em;
+.headerr {
+	padding: 1.5em;
 	background-color: brown;
-
+	margin-bottom: 4em;
+}
+.header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-
-	margin-bottom: 4em;
 }
-.header__title {
-	background-color: aqua;
-}
+.header__title,
 .header__nav {
-	background-color: bisque;
+	color: var(--text-color);
 }
 .header__nav-ul {
 	display: flex;
@@ -43,9 +44,10 @@
 	margin-bottom: 1em;
 }
 .select {
-	background-color: var(--gay-color);
 	padding: 3em;
 	margin-bottom: 3em;
+	background-color: var(--gay-color);
+	border-radius: 1em;
 
 	display: flex;
 	flex-direction: column;
@@ -54,7 +56,6 @@
 }
 .form {
 	width: 100%;
-	/* background-color: blueviolet; */
 	display: flex;
 	flex-direction: column;
 	row-gap: 0.5em;
@@ -65,6 +66,7 @@
 .form__select {
 	outline: 1px solid #222;
 	border-radius: 0.3em;
+	padding: 0.3em;
 	/* background-color: yellow; */
 
 	width: 100%;
@@ -79,13 +81,30 @@
 	text-align: center;
 	font-size: 1.3em;
 	font-weight: bold;
+	margin-bottom: 2em;
 }
 .resultados__cotent {
 	padding: 0 0.7em;
 	/* background-color: yellowgreen; */
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
+	grid-template-columns: repeat(4, 1fr);
 	gap: 1.3em;
+}
+
+@media screen and (max-width: 1000px) {
+	.resultados__cotent {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+@media screen and (max-width: 730px) {
+	.resultados__cotent {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+@media screen and (max-width: 450px) {
+	.resultados__cotent {
+		grid-template-columns: repeat(1, 1fr);
+	}
 }
 .card {
 	border-radius: 0.5em;
@@ -102,7 +121,7 @@
 .card__info {
 	width: 100%;
 	min-height: 5em;
-	background-color: lightsalmon;
+	background-color: var(--card-color);
 	border-radius: 0 0 0.5em 0.5em;
 
 	display: flex;
@@ -112,6 +131,7 @@
 	align-items: center;
 }
 .card__title {
+	text-align: center;
 }
 .card__btn {
 	width: 80%;
@@ -121,4 +141,111 @@
 	text-align: center;
 	background-color: var(--btn-color);
 	color: var(--text-color);
+}
+
+/*--------MODAL SECTION--------*/
+.modal {
+	position: absolute;
+	padding: 2em;
+	width: 100%;
+	height: 100vh;
+	background-color: rgba(34, 34, 34, 0.966);
+	top: 0;
+	left: 0;
+	transform: scale(0);
+	transition: transform 0.3s;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.modal--active {
+	transform: scale(1);
+}
+.modal__container {
+	/* background-color: #a62520; */
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	column-gap: 1em;
+}
+@media screen and (max-width: 43.75rem) {
+	.modal {
+		height: initial;
+	}
+	.modal__container {
+		grid-template-columns: repeat(1, 1fr);
+		row-gap: 1em;
+	}
+}
+.modal__title {
+	font-size: 1.5em;
+	text-align: center;
+	font-weight: bold;
+}
+/*MODAL LEFT*/
+.modal__left {
+	background-color: aliceblue;
+	border-radius: 0.5em;
+	/* background-color: antiquewhite; */
+}
+.modal__img {
+	background-color: #840007;
+	max-height: 20em;
+}
+.modal__content {
+	/* background-color: azure; */
+	padding: 1em;
+}
+.modal__instructions {
+	font-size: 1.2em;
+	margin-bottom: 0.8em;
+}
+.modal__description {
+	max-height: 15em;
+	font-size: 0.9em;
+	overflow-y: scroll;
+	line-height: 1.35em;
+}
+/*MODAL RIGHT*/
+.modal__right {
+	background-color: aliceblue;
+	padding: 0.4em;
+	border-radius: 0.5em;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	row-gap: 1em;
+	/* background-color: violet; */
+}
+.modal__ingredients {
+	/* background-color: antiquewhite; */
+	text-align: center;
+	font-size: 1.2em;
+	font-weight: bold;
+}
+.modal__ul {
+	width: 100%;
+	padding: 1em;
+}
+.modal__li {
+	padding: 0.3em;
+	border: 0.0625rem solid #222;
+	border-radius: 0.3em;
+}
+.modal__btns {
+	/* background-color: bisque; */
+	display: flex;
+	justify-content: space-evenly;
+}
+.modal__btn {
+	width: 10em;
+	padding: 0.4em;
+	border-radius: 0.3em;
+	cursor: pointer;
+	color: var(--text-color);
+	background-color: var(--btn-color);
+}
+.modal__btn--grey {
+	background-color: var(--card-color);
+	color: #222;
 }

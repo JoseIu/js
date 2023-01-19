@@ -27,7 +27,7 @@ figure {
 	/* (Opcional) */
 	object-fit: cover;
 	/* (Opcional) */
-	object-position: center center;
+	/* object-position: center center; */
 }
 
 /* Reseteamos los enlaces para funcionar como cajas... */
@@ -106,7 +106,7 @@ svg {
 
 /* Configuramos la tipografía para toda la web */
 body {
-	min-height: 100vh;
+	/* min-height: 100vh; */
 	font-size: 100%;
 	font-family: var(--tipo-principal);
 	background-color: var(--bg-color);
