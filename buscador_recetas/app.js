@@ -96,7 +96,6 @@ const mostrarModal = id => {
 	//Mostramos los datos en el modal
 	const mostarReceta = datos => {
 		limpiarModal();
-		console.log(datos);
 		const { idMeal, strMeal, strMealThumb, strInstructions } = datos;
 
 		const modalContainer = document.querySelector('.modal__container');
@@ -126,7 +125,6 @@ const mostrarModal = id => {
 		const ulFragment = document.createDocumentFragment();
 		for (let i = 1; i <= 20; i++) {
 			if (datos[`strIngredient${i}`]) {
-				console.log(datos[`strIngredient${i}`]);
 				const ingredientes = datos[`strIngredient${i}`];
 				const cantidad = datos[`strMeasure${i}`];
 
@@ -147,6 +145,9 @@ const mostrarModal = id => {
 		const btnFav = document.createElement('button');
 		btnFav.classList.add('modal__btn');
 		btnFav.textContent = 'Guardar Favorito';
+		btnFav.onclick = () => {
+			agregarFav({ id: idMeal, titulo: strMeal, img: strMealThumb });
+		};
 
 		const btnCerrar = document.createElement('button');
 		btnCerrar.classList.add('modal__btn', 'modal__btn--grey');
@@ -171,6 +172,12 @@ const limpiarModal = () => {
 	while (modalContainer.firstChild) {
 		modalContainer.removeChild(modalContainer.firstChild);
 	}
+};
+
+const agregarFav = receta => {
+	console.log(receta);
+	const favoritos = JSON.parse(localStorage.getItem('favoritos')) ?? [];
+	localStorage.setItem('favoritos', JSON.stringify([...favoritos, receta]));
 };
 
 document.addEventListener('DOMContentLoaded', () => {
