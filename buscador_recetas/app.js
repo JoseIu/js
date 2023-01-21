@@ -12,22 +12,23 @@ const iniciarAPP = () => {
 
 const llenarSelect = categorias => {
 	const categories = document.querySelector('#categories');
-	categories.addEventListener('change', seleccionarCategoria);
+	if (categories) {
+		categories.addEventListener('change', seleccionarCategoria);
+		const fragment = document.createDocumentFragment();
 
-	const fragment = document.createDocumentFragment();
+		categorias.forEach(categoria => {
+			const { strCategory } = categoria;
 
-	categorias.forEach(categoria => {
-		const { strCategory } = categoria;
+			const option = document.createElement('option');
+			option.classList.add('form__option');
+			option.value = strCategory;
+			option.textContent = strCategory;
 
-		const option = document.createElement('option');
-		option.classList.add('form__option');
-		option.value = strCategory;
-		option.textContent = strCategory;
+			fragment.append(option);
+		});
 
-		fragment.append(option);
-	});
-
-	categories.append(fragment);
+		categories.append(fragment);
+	}
 };
 
 const seleccionarCategoria = e => {
@@ -144,9 +145,16 @@ const mostrarModal = id => {
 
 		const btnFav = document.createElement('button');
 		btnFav.classList.add('modal__btn');
-		btnFav.textContent = 'Guardar Favorito';
+		btnFav.textContent = existeStorage(idMeal) ? 'Eliminar Favorito' : 'Guardar Favorito';
 		btnFav.onclick = () => {
+			console.log(existeStorage(idMeal));
+			if (existeStorage(idMeal)) {
+				eliminarFav(idMeal);
+				btnFav.textContent = 'Guardar Favorito';
+				return;
+			}
 			agregarFav({ id: idMeal, titulo: strMeal, img: strMealThumb });
+			btnFav.textContent = 'Eliminar Favorito';
 		};
 
 		const btnCerrar = document.createElement('button');
@@ -173,13 +181,61 @@ const limpiarModal = () => {
 		modalContainer.removeChild(modalContainer.firstChild);
 	}
 };
-
 const agregarFav = receta => {
 	console.log(receta);
 	const favoritos = JSON.parse(localStorage.getItem('favoritos')) ?? [];
 	localStorage.setItem('favoritos', JSON.stringify([...favoritos, receta]));
 };
+const eliminarFav = id => {
+	const favoritos = JSON.parse(localStorage.getItem('favoritos')) ?? [];
+	const nuevosFav = favoritos.filter(favorito => favorito.id !== id);
+	console.log(nuevosFav);
+	localStorage.setItem('favoritos', JSON.stringify(nuevosFav));
+};
+const existeStorage = id => {
+	const favoritos = JSON.parse(localStorage.getItem('favoritos')) ?? [];
+	return favoritos.some(favorito => favorito.id === id);
+};
 
+const mostrarFav = () => {
+	const favoritosContainer = document.querySelector('.favoritos');
+
+	if (favoritosContainer) {
+		const favoritos = JSON.parse(localStorage.getItem('favoritos')) ?? [];
+		const resultadosCotent = document.createElement('div');
+		resultadosCotent.classList.add('resultados__cotent');
+
+		favoritos.forEach(fav => {
+			const { id, titulo, img } = fav;
+
+			const card = document.createElement('article');
+			card.classList.add('card');
+
+			const imgDiv = document.createElement('div');
+			imgDiv.classList.add('card__image');
+			imgDiv.innerHTML = /*html*/ `
+			<img class="card__img" src="${img}" loading="lazy" alt="${titulo}"/>`;
+
+			const btnInfo = document.createElement('div');
+			btnInfo.classList.add('card__info');
+			const h3 = document.createElement('h3');
+			h3.classList.add('card__title');
+			h3.textContent = titulo;
+
+			const btn = document.createElement('button');
+			btn.classList.add('card__btn');
+			btn.textContent = 'Ver Receta';
+			btn.onclick = () => {
+				mostrarModal(id);
+			};
+			btnInfo.append(h3, btn);
+			card.append(imgDiv, btnInfo);
+			resultadosCotent.append(card);
+		});
+		favoritosContainer.append(resultadosCotent);
+	}
+};
 document.addEventListener('DOMContentLoaded', () => {
 	iniciarAPP();
+	mostrarFav();
 });
